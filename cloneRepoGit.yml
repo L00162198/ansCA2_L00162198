@@ -1,0 +1,9 @@
+---
+ -hosts: nginxlyit
+  become: true
+  tasks:
+  - name: clone a github repo
+    git:
+      repo: https://github.com/L00162198/ansCA2_L00162198.git
+      dest: /var/www/html
+      force:yes
