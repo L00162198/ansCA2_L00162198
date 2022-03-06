@@ -1,0 +1,25 @@
+---
+-
+
+  hosts: localhost
+  name: "create a s3 bucket" 
+  vars_files:
+    - cred.yml  
+  tasks:
+    -
+      amazon.aws.s3_bucket:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: lyits3bucketl00162198
+        region: eu-west-2
+        state: present
+        ignore_nonexistent_bucket: True
+      name: "create a s3 bucket"
+  s3:
+    bucket: lyits3bucketl00162198
+    object: db.csv
+    dest: mysql/lyit_dub
+    mode: get
+    aws_access_key: "{{ s3.aws_access_key }}"
+    aws_access_key: "{{ s3.aws_secret_key }}"
+  delegate_to: 192.168.56.11
